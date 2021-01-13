@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   validates :name,       presence: true
+  validates :profile,    presence: true
   validates :occupation, presence: true
   validates :position,   presence: true
 

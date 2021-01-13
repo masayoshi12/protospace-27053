@@ -2,7 +2,7 @@ class PrototypesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :update, :destroy]
 
   def index
-    @prototypes = Prototype.all
+    @prototypes = Prototype.includes(:user)
   end
 
   def show
@@ -42,7 +42,7 @@ class PrototypesController < ApplicationController
     if prototype.update(prototype_params)
       redirect_to prototype_path(prototype.id), method: :get
     else
-      render :edit
+      redirect_to action: :edit
     end
   end
 
